@@ -6,8 +6,15 @@ package classes;
 
 /**
  *
- * @author FFC03
+ * @author Felicia
  */
 public class Answer {
-    
+    private boolean correctType;
+    private boolean correctError;
+    public Answer(News news, String identifiedType){
+        
+    }
+    public Answer(News news, String identifiedType, String identifiedError){
+        
+    }
 }
