@@ -34,6 +34,7 @@ public class home extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Algerian", 0, 36)); // NOI18N
         jLabel1.setText("The Credible Lens");
 
+        jButton1.setBackground(new java.awt.Color(0, 255, 0));
         jButton1.setFont(new java.awt.Font("Algerian", 0, 18)); // NOI18N
         jButton1.setText("start");
         jButton1.setToolTipText("");
@@ -44,6 +45,7 @@ public class home extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(255, 0, 0));
         jButton2.setFont(new java.awt.Font("Algerian", 0, 18)); // NOI18N
         jButton2.setText("Exit");
         jButton2.setToolTipText("");
