@@ -26,13 +26,13 @@ public class News {
         this.category = category;
     }
     public String information(){
-        
+        return "This is a news";
     }
     public String getType(){
-        
+        return type;
     }
     @Override
     public String toString(){
-        
+        return "Headline: " + headline + "\nContent: " + contents + "\nAuthor: " + author + "\nDate" + date + "\nNews Source: " + newsSource + "\nType: " + type + "\nCategory" + category;
     }
 }
