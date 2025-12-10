@@ -12,6 +12,8 @@ public class setup extends javax.swing.JFrame {
     /**
      * Creates new form setup
      */
+    public String[] questions;
+    public static int size;
     public setup() {
         initComponents();
     }
@@ -101,8 +103,24 @@ public class setup extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        this.setVisible(false);
-        new questions().setVisible(true);
+        try{
+            if (number.getText().equals("")){
+                size = 4;
+            } else{
+                int input = Integer.parseInt(number.getText());
+                if (input <= 6){
+                    size = input;
+                } else{
+                    size = 6;
+                }
+            }
+            questions = new String[size];
+            //Remaining parts: randomly generate questions from news.csv
+            this.setVisible(false);
+            new questions().setVisible(true);
+        } catch (NumberFormatException e){
+            jLabel3.setText("Error");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
