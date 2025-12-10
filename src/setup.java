@@ -19,7 +19,7 @@ public class setup extends javax.swing.JFrame {
     /**
      * Creates new form setup
      */
-    public ArrayList<News> questions;
+    public static ArrayList<News> questions;
     public static int size;
     public setup() {
         initComponents();
