@@ -108,7 +108,7 @@
             <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="hhhhhhhhhhhhhhhhhhhhhhh"/>
+            <Property name="text" type="java.lang.String" value="news"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -149,6 +149,9 @@
         </Property>
         <Property name="selectedIndex" type="int" value="-1"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>

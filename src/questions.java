@@ -12,10 +12,12 @@ public class questions extends javax.swing.JFrame {
     /**
      * Creates new form questions
      */
+    public static int currentID = 1;
     public questions() {
         initComponents();
         jLabel3.setVisible(false);
         jComboBox1.setVisible(false);
+        jLabel2.setText("News #" + currentID);
     }
 
     /**
@@ -47,7 +49,7 @@ public class questions extends javax.swing.JFrame {
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("hhhhhhhhhhhhhhhhhhhhhhh");
+        jTextArea1.setText("news");
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton1.setText("Real");
@@ -69,6 +71,11 @@ public class questions extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unreliable Source", "Missing Context", "Spelling Error", "Style Mismatch" }));
         jComboBox1.setSelectedIndex(-1);
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,6 +129,7 @@ public class questions extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        System.out.println(currentID);
         this.setVisible(false);
         new result().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -131,6 +139,12 @@ public class questions extends javax.swing.JFrame {
         jLabel3.setVisible(true);
         jComboBox1.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new result().setVisible(true);
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
