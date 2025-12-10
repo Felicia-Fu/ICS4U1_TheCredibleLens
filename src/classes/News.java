@@ -6,7 +6,7 @@ package classes;
 
 /**
  *
- * @author FFC03
+ * @author Jia Xin Li
  */
 public class News {
     private String headline;
@@ -35,5 +35,4 @@ public class News {
     public String toString(){
         return "Headline: " + headline + "\nContent: " + contents + "\nAuthor: " + author + "\nDate" + date + "\nNews Source: " + newsSource + "\nType: " + type + "\nCategory" + category;
     }
-  //hi
 }
