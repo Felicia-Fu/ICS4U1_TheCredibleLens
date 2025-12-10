@@ -12,6 +12,7 @@ public class finalResult extends javax.swing.JFrame {
     /**
      * Creates new form finalResult
      */
+    public int hh;
     public finalResult() {
         initComponents();
     }
