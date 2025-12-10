@@ -22,7 +22,7 @@ public class questions extends javax.swing.JFrame {
         jLabel3.setVisible(false);
         jComboBox1.setVisible(false);
         jLabel2.setText("News #" + currentID);
-        jTextArea1.setText(setup.questions.get(currentID - 1).toString());
+        jTextArea1.setText(setup.quiz.get(currentID - 1).toString());
     }
 
     /**
