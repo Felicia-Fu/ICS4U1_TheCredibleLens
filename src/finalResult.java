@@ -28,7 +28,14 @@ public class finalResult extends javax.swing.JFrame {
         }
         double[] contents = bubbleSort(new File("scores.txt"));
         double topQuartile = calculateTopQuartile(contents);
-        jTextArea1.setText("Your score is " + score + "\nYour score is" + (score >= topQuartile ? "" : " not") + " in the top quartile of all attempts.");
+        jTextArea1.setText("Your score is " + score + "\nYour score is" + 
+                (score >= topQuartile ? "" : " not") + " in the top quartile of all attempts."
+        + (score >= topQuartile ? "" : "\n\nHere are some tips for identifying misinformation online: \n"
+                + "1. Get news from multiple reputable sources\n"
+                + "2. Critically assess a source’s credibility\n"
+                + "3. Amplify expert voices\n"
+                + "4. Address rumors by clearly explaining why they are incorrect"));
+        
         setup.size = 0;
         setup.quiz.clear();
         questions.currentID = 1;
