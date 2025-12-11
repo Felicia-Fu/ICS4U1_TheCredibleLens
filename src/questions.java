@@ -8,8 +8,6 @@
  * @author FFC03
  */
 import classes.Answer;
-import classes.RealNews;
-import classes.FakeNews;
 public class questions extends javax.swing.JFrame {
 
     /**
@@ -134,7 +132,7 @@ public class questions extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        answer = new Answer(setup.questions.get(currentID - 1), "Real");
+        answer = new Answer(setup.quiz.get(currentID - 1), "Real");
         this.setVisible(false);
         new result().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -147,7 +145,7 @@ public class questions extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-        answer = new Answer(setup.questions.get(currentID - 1), "Fake", jComboBox1.getSelectedItem().toString());
+        answer = new Answer(setup.quiz.get(currentID - 1), "Fake", jComboBox1.getSelectedItem().toString());
         this.setVisible(false);
         new result().setVisible(true);
     }//GEN-LAST:event_jComboBox1ActionPerformed
