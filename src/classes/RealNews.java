@@ -10,8 +10,8 @@ package classes;
  */
 public class RealNews extends News{
     private String url;
-    public RealNews(String headline, String contents, String author, String date, String newsSource, String type, String category, String url){
-        super(headline, contents, author, date, newsSource, type, category);
+    public RealNews(String type, String category, String headline, String contents, String author, String date, String newsSource, String url){
+        super(type, category, headline, contents, author, date, newsSource);
         this.url = url;
     }
     @Override
