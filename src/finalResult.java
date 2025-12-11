@@ -7,14 +7,32 @@
  *
  * @author FFC03
  */
+import java.io.*;
+import java.util.Scanner;
 public class finalResult extends javax.swing.JFrame {
 
     /**
      * Creates new form finalResult
      */
-    public int hh;
     public finalResult() {
         initComponents();
+        double score = (double)result.score / (setup.size * 2) * 100.0;
+        score = Math.round(score * 100.0) / 100.0;
+        try{
+            FileWriter fw = new FileWriter("scores.txt", true);
+            PrintWriter pw = new PrintWriter(fw);
+            pw.println(score);
+            pw.close();
+        }catch (IOException e){
+            System.out.println("Score loss!!!");
+        }
+        double[] contents = bubbleSort(new File("scores.txt"));
+        double topQuartile = calculateTopQuartile(contents);
+        jTextArea1.setText("Your score is " + score + "\nYour score is" + (score >= topQuartile ? "" : " not") + " in the top quartile of all attempts.");
+        setup.size = 0;
+        setup.quiz.clear();
+        questions.currentID = 1;
+        result.score = 0;
     }
 
     /**
@@ -36,6 +54,7 @@ public class finalResult extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Algerian", 0, 24)); // NOI18N
         jLabel1.setText("The Credible Lens");
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
@@ -121,6 +140,55 @@ public class finalResult extends javax.swing.JFrame {
                 new finalResult().setVisible(true);
             }
         });
+    }
+    
+    private static double[] bubbleSort(File file){
+        double[] contents;
+        try{
+            Scanner scan = new Scanner(file);
+            int count = 0;
+            while (scan.hasNextLine()){
+                count ++;
+                scan.nextLine();
+            }
+            contents = new double[count];
+            scan.close();
+            Scanner read = new Scanner(file);
+            for (int i = 0; i < count; i ++){
+                contents[i] = Double.parseDouble(read.nextLine());
+            }
+            for (int i = 0; i < contents.length; i ++){
+                for (int j = 0; j < contents.length - 1 - i; j ++){
+                    if (contents[j + 1] > contents[j]){
+                        double temp = contents[j];
+                        contents[j] = contents[j + 1];
+                        contents[j + 1] = temp;
+                    }
+                }
+            }
+            read.close();
+            return contents;
+        } catch(IOException e){
+            contents = new double[0];
+            return contents;
+        }
+    }
+    
+    private static double calculateTopQuartile(double[] num){
+        int mid = (num.length - 1)/2;
+        if (num.length % 2 == 0){
+            if ((mid + 1) % 2 == 0){
+                return (num[mid/2] + num[mid/2+1])/2;
+            } else{
+                return num[mid/2];
+            }
+        } else{
+            if (mid % 2 ==0 && mid != 0){
+                return (num[mid/2] + num[mid/2-1])/2;
+            } else{
+                return num[mid/2];
+            }
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
