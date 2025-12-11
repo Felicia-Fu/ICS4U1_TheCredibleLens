@@ -16,7 +16,7 @@ public class News {
     private String newsSource;
     private String type;
     private String category;
-    public News(String headline, String contents, String author, String date, String newsSource, String type, String category){
+    public News(String type, String category, String headline, String contents, String author, String date, String newsSource){
         this.headline = headline;
         this.contents = contents;
         this.author = author;
@@ -33,6 +33,6 @@ public class News {
     }
     @Override
     public String toString(){
-        return "Headline: " + headline + "\nContent: " + contents + "\nAuthor: " + author + "\nDate" + date + "\nNews Source: " + newsSource + "\nType: " + type + "\nCategory" + category;
+        return "Headline: " + headline + "\nContent: " + contents + "\nAuthor: " + author + "\nDate: " + date + "\nNews Source: " + newsSource + "\nCategory: " + category;
     }
 }
