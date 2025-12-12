@@ -10,19 +10,22 @@
 import classes.RealNews;
 import classes.FakeNews;
 public class result extends javax.swing.JFrame {
-
-    /**
-     * Creates new form result
-     */
+    //Variables to be passed on to other forms
     public static int score = 0;
+    
     public result() {
         initComponents();
+        //Setting text
         news.setText("News #" + questions.currentID);
-        String result = setup.quiz.get(questions.currentID - 1).information() + "\n\nYou got the type of the news " + (questions.answer.getTypeCorrect() ? "correct." : "incorrect.");
+        //Setting content of variable result
+        String result = setup.quiz.get(questions.currentID - 1).information() + "\n\nYou got the type of the news "
+                + (questions.answer.getTypeCorrect() ? "correct." : "incorrect.");
         if (questions.answer.getErrorCorrect() != null){
             result += "\nYou got the error of the news " + (questions.answer.getErrorCorrect() ? "correct." : "incorect.");
         }
         jTextArea1.setText(result);
+        //Setting score (For RealNews, correctly identifying earns 2 points. For FakeNews,
+        //correctly identifying type and error each earns 1 point.
         if (setup.quiz.get(questions.currentID - 1) instanceof RealNews && questions.answer.getTypeCorrect()){
             score += 2;
         } else if (setup.quiz.get(questions.currentID - 1) instanceof FakeNews && questions.answer.getTypeCorrect()){
@@ -112,8 +115,8 @@ public class result extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
         this.setVisible(false);
+        //Determining which form to go to based on the currentID of the question
         if (questions.currentID < setup.size){
             questions.currentID ++;
             new questions().setVisible(true);
