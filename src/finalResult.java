@@ -10,14 +10,12 @@
 import java.io.*;
 import java.util.Scanner;
 public class finalResult extends javax.swing.JFrame {
-
-    /**
-     * Creates new form finalResult
-     */
     public finalResult() {
         initComponents();
+        //Calculate percent score and round it to 2 decimal places
         double score = (double)result.score / (setup.size * 2) * 100.0;
         score = Math.round(score * 100.0) / 100.0;
+        //Write the score to "scores.txt" file
         try{
             FileWriter fw = new FileWriter("scores.txt", true);
             PrintWriter pw = new PrintWriter(fw);
@@ -26,8 +24,10 @@ public class finalResult extends javax.swing.JFrame {
         }catch (IOException e){
             System.out.println("Score loss!!!");
         }
+        //Load bubble sorted contents from "scores.txt" and calculate top quartile score
         double[] contents = bubbleSort(new File("scores.txt"));
         double topQuartile = calculateTopQuartile(contents);
+        //Setting text based on comparison between score and top quartile score
         jTextArea1.setText("Your score is " + score + "\nYour score is" + 
                 (score >= topQuartile ? "" : " not") + " in the top quartile of all attempts."
         + (score >= topQuartile ? "" : "\n\nHere are some tips for identifying misinformation online: \n"
@@ -35,7 +35,7 @@ public class finalResult extends javax.swing.JFrame {
                 + "2. Critically assess a source’s credibility\n"
                 + "3. Amplify expert voices\n"
                 + "4. Address rumors by clearly explaining why they are incorrect"));
-        
+        //Reset variables passed between forms
         setup.size = 0;
         setup.quiz.clear();
         questions.currentID = 1;
@@ -149,8 +149,14 @@ public class finalResult extends javax.swing.JFrame {
         });
     }
     
+    /**
+     * This method loads and bubble sorts contents from the file
+     * @param file
+     * @return an array of scores of double type
+     */
     private static double[] bubbleSort(File file){
         double[] contents;
+        //Count the number of lines in the file
         try{
             Scanner scan = new Scanner(file);
             int count = 0;
@@ -158,12 +164,16 @@ public class finalResult extends javax.swing.JFrame {
                 count ++;
                 scan.nextLine();
             }
-            contents = new double[count];
+            //
             scan.close();
+            //Initialize the array for bubble contents of the file
+            contents = new double[count];
             Scanner read = new Scanner(file);
+            //Load contents of the file to the array
             for (int i = 0; i < count; i ++){
                 contents[i] = Double.parseDouble(read.nextLine());
             }
+            //Bubble sort contents of the array in descending order
             for (int i = 0; i < contents.length; i ++){
                 for (int j = 0; j < contents.length - 1 - i; j ++){
                     if (contents[j + 1] > contents[j]){
@@ -174,22 +184,34 @@ public class finalResult extends javax.swing.JFrame {
                 }
             }
             read.close();
-            return contents;
         } catch(IOException e){
             contents = new double[0];
-            return contents;
         }
+        return contents;
     }
     
+    /**
+     * This method calculates the top quartile score.
+     * @param num
+     * @return 
+     */
     private static double calculateTopQuartile(double[] num){
+        //Get the index of element in the middle
         int mid = (num.length - 1)/2;
+        //If the size of the array is an even number, include the mid index in the first half of the dataset.
         if (num.length % 2 == 0){
+            //If the size of the first half is even number, return the average of two numbers in the middle.
+            //Otherwise, return the number in the middle
             if ((mid + 1) % 2 == 0){
                 return (num[mid/2] + num[mid/2+1])/2;
             } else{
                 return num[mid/2];
             }
+        //If the size of the array is an odd number, the mid index isn't included in the first half of the dataset.
         } else{
+            //If the size of the first half is an even number and if mid is not 0 (in case there's only 3 scores
+            //in the file), return the average of two number in the middle.
+            //Otherwise, return the number in the middle.
             if (mid % 2 ==0 && mid != 0){
                 return (num[mid/2] + num[mid/2-1])/2;
             } else{
